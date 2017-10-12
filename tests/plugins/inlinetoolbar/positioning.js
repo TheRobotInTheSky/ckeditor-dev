@@ -82,6 +82,14 @@
 				balloonTestsTools.attachBalloon( this.inlineToolbar, this.markerElement );
 
 				balloonTestsTools.assertMoveTo( this.moveSpy, 92.5, 353 );
+			},
+
+			'test panel adds cke_inlinetoolbar class': function() {
+				this.markerElement.getClientRect = sinon.stub().returns( { height: 15, width: 25, left: 129, bottom: -75.65625, right: 154, top: -90.65625 } );
+				balloonTestsTools.attachBalloon( this.inlineToolbar, this.markerElement );
+
+				assert.isTrue( this.inlineToolbar.parts.panel.hasClass( 'cke_inlinetoolbar' ), 'Panel has a cke_inlinetoolbar class' );
+				assert.isTrue( this.inlineToolbar.parts.panel.hasClass( 'cke_balloon' ), 'Class cke_balloon class was not removed' );
 			}
 		};
 	bender.test( tests );
